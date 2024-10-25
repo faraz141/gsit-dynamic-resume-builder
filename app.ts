@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('education-start-date') as HTMLInputElement
       ).value,
       schoolEndingDate: (
-        document.getElementById('education-Ending-date') as HTMLInputElement
+        document.getElementById('education-ending-date') as HTMLInputElement
       ).value,
       workExperienceCompanyDiscription: (
         document.getElementById('company-description') as HTMLTextAreaElement
@@ -102,10 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
       </ul></div>
       </div>
       <div class="right">
-      <div class="experience"><h3>WorkExperience</h3>
+      <div class="experience"><h3>Work Experience</h3>
       <h4><strong>Company Name :</strong> ${
         formData.workExperienceCompanyName
-      }<br/>${formData.WorkStartDate}-${formData.workEndingDate}</h4>
+      }<br/>${formData.WorkStartDate}  -  ${formData.workEndingDate}</h4>
 
       <h4><strong>Position :</strong> ${
         formData.workExperiencePositionName
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="Education"><h3>Education</h3>
       <p>${formData.school} <br/> ${formData.degree}<br/>${
       formData.schoolStartDate
-    }-${formData.schoolEndingDate}</p></div>
+    }    -   ${formData.schoolEndingDate}</p></div>
       </div>
       </div>
       
