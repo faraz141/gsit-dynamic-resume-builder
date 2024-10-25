@@ -1,83 +1,131 @@
-interface ResumeFormData {
-  name: string;
-  email: string;
-  contactNo: string;
-  dob: string;
-  nationality: string;
-  education: string;
-  workExperience: string;
-  skills: string;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('resumeForm') as HTMLFormElement;
   const generateCvButton = document.getElementById(
     'generateCv',
   ) as HTMLButtonElement;
-  const resumePreview = document.getElementById(
-    'resumePreview',
-  ) as HTMLDivElement;
+  const resumePreview = document.getElementById('resumePreview') as HTMLElement;
 
   generateCvButton.addEventListener('click', () => {
-    const formData: ResumeFormData = {
+    const formData = {
       name: (document.getElementById('name') as HTMLInputElement).value,
+      title: (document.getElementById('title') as HTMLInputElement).value,
       email: (document.getElementById('email') as HTMLInputElement).value,
       contactNo: (document.getElementById('contactNo') as HTMLInputElement)
         .value,
       dob: (document.getElementById('dob') as HTMLInputElement).value,
-      nationality: (document.getElementById('nationality') as HTMLInputElement)
+      address: (document.getElementById('address') as HTMLInputElement).value, // Changed from 'Address' to 'address'
+      summary: (document.getElementById('summary') as HTMLTextAreaElement)
         .value,
-      education: (document.getElementById('education') as HTMLTextAreaElement)
-        .value,
-      workExperience: (
-        document.getElementById('workExperience') as HTMLTextAreaElement
+      school: (document.getElementById('school') as HTMLInputElement).value,
+      degree: (document.getElementById('degree') as HTMLInputElement).value,
+      workExperienceCompanyDiscription: (
+        document.getElementById('company-description') as HTMLTextAreaElement
       ).value,
-      skills: (document.getElementById('skills') as HTMLTextAreaElement).value,
+      workExperienceCompanyName: (
+        document.getElementById('company-name') as HTMLInputElement
+      ).value,
+      workExperiencePositionName: (
+        document.getElementById('position') as HTMLInputElement
+      ).value,
+      workExperiencePositionDiscription: (
+        document.getElementById('position-description') as HTMLTextAreaElement
+      ).value,
+      // Changed from 'company-discription' to 'company-description'
+      skills: [
+        (document.getElementById('skill1') as HTMLInputElement).value,
+        (document.getElementById('skill2') as HTMLInputElement).value,
+        (document.getElementById('skill3') as HTMLInputElement).value,
+        (document.getElementById('skill4') as HTMLInputElement).value,
+        (document.getElementById('soft-skill1') as HTMLInputElement).value,
+        (document.getElementById('soft-skill2') as HTMLInputElement).value,
+      ],
     };
 
-    // Reset error messages
-    const errorElements = document.querySelectorAll('.error');
-    errorElements.forEach(
-      (el) => ((el as HTMLSpanElement).style.display = 'none'),
-    );
-
-    let isValid = true;
-
-    // Validate form fields
-    Object.keys(formData).forEach((key) => {
-      if (formData[key as keyof ResumeFormData] === '') {
-        isValid = false;
-        const errorElement = document.getElementById(
-          `${key}Error`,
+    // Validation
+    const errors = validateForm(formData);
+    if (errors.length > 0) {
+      errors.forEach((error) => {
+        const errorField = document.getElementById(
+          `${error.field}Error`,
         ) as HTMLSpanElement;
-        if (errorElement) {
-          errorElement.style.display = 'block';
-        }
-      }
-    });
-
-    if (isValid) {
-      updateResumePreview(formData);
+        errorField.style.display = 'inline';
+      });
+      return; // Stop execution if there are errors
+    } else {
+      hideErrors();
     }
+
+    // Generate Resume Preview
+    resumePreview.innerHTML = `
+      <div class= "resume-container">
+      <div class="top">
+      <h1>${formData.name}</h1>
+      <h2>${formData.title}</h2>
+      <div class="info">
+      <div class="info-detail"><p><i class="fas fa-envelope"></i> ${
+        formData.email
+      }</p></div>
+      <div class="info-detail">  <p><i class="fas fa-phone"></i> ${
+        formData.contactNo
+      }</p>
+</div>
+      <div class="info-detail">  <p><i class="fas fa-birthday-cake"></i> ${
+        formData.dob
+      }</p>
+</div>
+      <div class="info-detail"><p><i class="fas fa-map-marker-alt"></i> ${
+        formData.address
+      }</p></div>
+  </div>
+      </div>
+      </div>
+      <div class="main">
+      <div class="left">
+      <div class="summary"><h3>Summary</h3>
+      <p>${formData.summary}</p></div>
+      <div class="skill"><h3>Skills</h3>
+      <ul>
+        ${formData.skills
+          .map((skill) => (skill ? `<li>${skill}</li>` : ''))
+          .join('')}
+      </ul></div>
+      </div>
+      <div class="right">
+      <div class="experience"><h3>WorkExperience</h3>
+      <h4><strong>Company Name :</strong> ${
+        formData.workExperienceCompanyName
+      }</h4>
+      <h4><strong>Position :</strong> ${
+        formData.workExperiencePositionName
+      }</h4>
+      <p><strong>Position Description :</strong> ${
+        formData.workExperiencePositionDiscription
+      }</p>
+      <p>${formData.workExperienceCompanyDiscription}</p></div>
+      <div class="Education"><h3>Education</h3>
+      <p>${formData.school} - ${formData.degree}</p></div>
+      </div>
+      </div>
+      
+      
+      
+      
+    `;
   });
 
-  function updateResumePreview(formData: ResumeFormData) {
-    resumePreview.innerHTML = `
-        <div class="resumeContent">
-            <h2>${formData.name}</h2>
-            <p><strong>Email:</strong> ${formData.email}</p>
-            <p><strong>Contact Number:</strong> ${formData.contactNo}</p>
-            <p><strong>Date of Birth:</strong> ${new Date(
-              formData.dob,
-            ).toLocaleDateString()}</p>
-            <p><strong>Nationality:</strong> ${formData.nationality}</p>
-            <h3>Education</h3>
-            <p>${formData.education.replace(/\n/g, '<br>')}</p>
-            <h3>Work Experience</h3>
-            <p>${formData.workExperience.replace(/\n/g, '<br>')}</p>
-            <h3>Skills</h3>
-            <p>${formData.skills.replace(/\n/g, '<br>')}</p>
-        </div>
-    `;
+  function validateForm(data: any) {
+    const errors = [];
+    for (const field in data) {
+      if (!data[field]) {
+        errors.push({ field });
+      }
+    }
+    return errors;
+  }
+
+  function hideErrors() {
+    const errorElements = document.querySelectorAll('.error');
+    errorElements.forEach((el) => {
+      (el as HTMLElement).style.display = 'none';
+    });
   }
 });
