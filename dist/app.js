@@ -15,10 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 .value,
             school: document.getElementById('school').value,
             degree: document.getElementById('degree').value,
+            schoolStartDate: document.getElementById('education-start-date').value,
+            schoolEndingDate: document.getElementById('education-Ending-date').value,
             workExperienceCompanyDiscription: document.getElementById('company-description').value,
             workExperienceCompanyName: document.getElementById('company-name').value,
             workExperiencePositionName: document.getElementById('position').value,
             workExperiencePositionDiscription: document.getElementById('position-description').value,
+            WorkStartDate: document.getElementById('work-start-date').value,
+            workEndingDate: document.getElementById('work-ending-date').value,
             // Changed from 'company-discription' to 'company-description'
             skills: [
                 document.getElementById('skill1').value,
@@ -70,12 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <div class="right">
       <div class="experience"><h3>WorkExperience</h3>
-      <h4><strong>Company Name :</strong> ${formData.workExperienceCompanyName}</h4>
+      <h4><strong>Company Name :</strong> ${formData.workExperienceCompanyName}<br/>${formData.WorkStartDate}-${formData.workEndingDate}</h4>
+
       <h4><strong>Position :</strong> ${formData.workExperiencePositionName}</h4>
       <p><strong>Position Description :</strong> ${formData.workExperiencePositionDiscription}</p>
       <p>${formData.workExperienceCompanyDiscription}</p></div>
       <div class="Education"><h3>Education</h3>
-      <p>${formData.school} - ${formData.degree}</p></div>
+      <p>${formData.school} <br/> ${formData.degree}<br/>${formData.schoolStartDate}-${formData.schoolEndingDate}</p></div>
       </div>
       </div>
       
