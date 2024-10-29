@@ -18,14 +18,18 @@ h2 {
   text-align: start;
   font-size: 30px;
 }
-
+h2 span {
+  color: rgba(0, 0, 0, 0.903);
+  font-size: 16px;
+}
 h1 {
   text-align: center;
   font-size: 40px;
 }
 
 .personal-information,
-.skills {
+.skills,
+.languages {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +37,8 @@ h1 {
 }
 
 .personal-information input,
-.skills input {
+.skills input,
+.languages input {
   width: 100%;
   height: 40px;
   margin: 2px;
@@ -69,7 +74,8 @@ h1 {
 }
 
 .form-group,
-.skills-input {
+.skills-input,
+.languages-input {
   margin: 10px;
   width: 47%;
 }
@@ -95,6 +101,10 @@ label {
 .date-input {
   margin: 10px 6px;
   width: 47%;
+  /* display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end; */
 }
 
 .education-input,
@@ -104,7 +114,8 @@ label {
 }
 
 .education-input input,
-.work-experience-input input {
+.work-experience-input input,
+.certification-input input {
   width: 96%;
   height: 40px;
   margin: 6px 20px;
@@ -118,11 +129,16 @@ label {
 }
 
 .education-input-date input:hover,
-.work-experiaece-date input:hover {
+.work-experiaece-date input:hover,
+.work-experience-input input:hover,
+.date-input input:hover,
+.certification-input input:hover,
+.languages-input input:hover {
   transform: scale(1.06);
 }
 
 .education-input-date input,
+.date-input input,
 .work-experience-date input {
   width: 100%;
   height: 40px;
@@ -151,7 +167,28 @@ label {
   margin-top: 5px;
   font-size: 12px;
 }
-
+.add {
+  background-color: #ff5733;
+  color: white;
+  /* width: auto; */
+  padding: 10px 20px;
+  margin-right: 10px;
+  /* align-self: flex-end; */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.skill-heading,
+.education-heading,
+.certification-heading,
+.language-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 10px 50px; */
+}
 #resumePreview {
   margin-top: 20px;
   border: 1px solid #ccc;
@@ -176,6 +213,7 @@ label {
 
 #resumePreview h3 {
   border-bottom: 2px solid #c026d3;
+  width: 100%;
   padding-bottom: 5px;
   font-size: 1.5rem;
   font-weight: 600;
@@ -200,6 +238,9 @@ label {
 #resumePreview .info-detail {
   margin: 4px 8px;
 }
+#resumePreview .info p {
+  padding: 4px 8px;
+}
 #resumePreview .info {
   display: flex;
   flex-direction: row;
@@ -215,15 +256,19 @@ label {
 }
 #resumePreview .left {
   width: 30%;
-  margin: 8px 12px;
+  margin: 0px 12px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
 }
 #resumePreview .right {
   width: 70%;
   margin: 8px 12px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  /* justify-content: space-between; */
 }
 #resumePreview .right p {
   width: 100%;
@@ -244,6 +289,7 @@ textarea {
   transition: background-color 0.3s;
 }
 
-#generateCv:hover {
+#generateCv:hover,
+.add:hover {
   background-color: #e04c2d;
 }

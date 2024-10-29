@@ -85,7 +85,7 @@
           <span class="error" id="summaryError">This field is required.</span>
         </div>
 
-        <h2>Education</h2>
+        <!-- <h2>Education</h2>
         <div class="education">
           <div class="education-input">
             <input type="text" id="school" name="school" placeholder="School" />
@@ -117,6 +117,75 @@
               <span class="error" id="education-ending-dateError"
                 >This field is required.</span
               >
+            </div>
+          </div>
+        </div> -->
+        <div class="education-heading">
+          <h2>Education</h2>
+          <button type="button" id="addEducation" class="add">
+            Add More Education
+          </button>
+        </div>
+        <div class="education" id="educationContainer">
+          <div class="education-input">
+            <input type="text" id="school" name="school" placeholder="School" />
+            <span class="error" id="schoolError">This field is required.</span>
+          </div>
+          <div class="education-input">
+            <input type="text" id="degree" name="degree" placeholder="Degree" />
+            <span class="error" id="degreeError">This field is required.</span>
+          </div>
+          <div class="education-input-date">
+            <div class="date-input">
+              <input
+                type="date"
+                id="education-start-date"
+                name="education-start-date"
+                placeholder="Starting Date"
+              />
+              <span class="error" id="education-start-dateError"
+                >This field is required.</span
+              >
+            </div>
+            <div class="date-input">
+              <input
+                type="date"
+                id="education-ending-date"
+                name="education-ending-date"
+                placeholder="Ending Date"
+              />
+              <span class="error" id="education-ending-dateError"
+                >This field is required.</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="certification-heading">
+          <h2>Certification</h2>
+          <button type="button" id="addCertification" class="add">
+            Add More Certification
+          </button>
+        </div>
+
+        <div id="certification-container">
+          <!-- Initial Certification Input -->
+          <div class="certification">
+            <div class="certification-input">
+              <input
+                type="text"
+                name="Certification-name"
+                id="certification-name1"
+                placeholder="Certification Name"
+              />
+            </div>
+            <div class="certification-input">
+              <input
+                type="text"
+                name="Organization-name"
+                id="organization-name1"
+                placeholder="Organization Name"
+              />
             </div>
           </div>
         </div>
@@ -189,54 +258,53 @@
           </div>
         </div>
 
-        <h2>Skills</h2>
-        <div class="skills">
+        <div class="skill-heading">
+          <h2>Skills</h2>
+          <button type="button" id="addSkills" class="add">
+            Add More Skills
+          </button>
+        </div>
+        <div class="skills" id="skills-container">
           <div class="skills-input">
             <input
               type="text"
               id="skill1"
               name="skill1"
-              placeholder="Technical Skill 1"
+              placeholder="Enter Your skill"
             />
+            <span class="error" id="schoolError">This field is required.</span>
           </div>
           <div class="skills-input">
             <input
               type="text"
-              id="skill2"
-              name="skill2"
-              placeholder="Technical Skill 2"
+              id="skill0"
+              name="skill0"
+              placeholder="Enter Your skill"
             />
+            <span class="error" id="schoolError">This field is required.</span>
           </div>
-          <div class="skills-input">
+        </div>
+        <div class="language-heading">
+          <h2>Languages</h2>
+          <button type="button" id="addLanguages" class="add">
+            Add More Languages
+          </button>
+        </div>
+        <div class="languages" id="language-container">
+          <div class="languages-input">
             <input
               type="text"
-              id="skill3"
-              name="skill3"
-              placeholder="Technical Skill 3"
+              id="language"
+              name="language"
+              placeholder="Enter Your Language"
             />
           </div>
-          <div class="skills-input">
+          <div class="languages-input">
             <input
               type="text"
-              id="skill4"
-              name="skill4"
-              placeholder="Technical Skill 4"
-            />
-          </div>
-          <div class="skills-input">
-            <input
-              type="text"
-              id="soft-skill1"
-              name="soft-skill1"
-              placeholder="Soft Skill 1"
-            />
-          </div>
-          <div class="skills-input">
-            <input
-              type="text"
-              id="soft-skill2"
-              name="soft-skill2"
-              placeholder="Soft Skill 2"
+              id="language0"
+              name="language0"
+              placeholder="Enter Your Language"
             />
           </div>
         </div>
