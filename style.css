@@ -5,7 +5,8 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: rgb(192, 38, 211);
+  background-color: #673ab7;
+  overflow-x: hidden;
 }
 
 h2,
@@ -18,10 +19,12 @@ h2 {
   text-align: start;
   font-size: 30px;
 }
+
 h2 span {
   color: rgba(0, 0, 0, 0.903);
   font-size: 16px;
 }
+
 h1 {
   text-align: center;
   font-size: 40px;
@@ -30,18 +33,26 @@ h1 {
 .personal-information,
 .skills,
 .languages {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
+.form-group,
+.skills-input,
+.languages-input {
+  margin: 10px;
+  width: 92%;
+}
+label {
+  display: block;
+  margin: 0px 10px;
+  color: #ffffff;
+}
 .personal-information input,
 .skills input,
 .languages input {
   width: 100%;
   height: 40px;
-  margin: 2px;
+  margin: 10px 10px;
   border-radius: 12px;
   border: none;
   font-size: 20px;
@@ -59,7 +70,7 @@ h1 {
 .summary textarea,
 .work-experience-input textarea {
   width: 96%;
-  margin: 10px 22px;
+  margin: 10px 10px;
   border-radius: 12px;
   border: none;
   background-color: #ffffff;
@@ -73,43 +84,31 @@ h1 {
   transform: scale(0.9);
 }
 
-.form-group,
-.skills-input,
-.languages-input {
-  margin: 10px;
-  width: 47%;
-}
-
-label {
-  display: block;
-  margin: 0px 10px;
-  color: #ffffff;
-}
-
 .education {
   width: 100%;
 }
 
 .education-input-date,
 .work-experience-date {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
 }
 
 .date-input {
-  margin: 10px 6px;
-  width: 47%;
-  /* display: flex;
-  flex-direction: column;
-  align-items: end;
-  justify-content: end; */
+  margin: 10px 5px;
+  width: 92%;
+}
+.work-experience,
+.education,
+.certification {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-.education-input,
-.work-experience {
-  margin: 20px 0px;
+.work-experience-input {
   width: 100%;
 }
 
@@ -118,7 +117,7 @@ label {
 .certification-input input {
   width: 96%;
   height: 40px;
-  margin: 6px 20px;
+  margin: 10px 10px;
   border-radius: 12px;
   border: none;
   font-size: 20px;
@@ -129,7 +128,7 @@ label {
 }
 
 .education-input-date input:hover,
-.work-experiaece-date input:hover,
+.work-experience-date input:hover,
 .work-experience-input input:hover,
 .date-input input:hover,
 .certification-input input:hover,
@@ -142,7 +141,7 @@ label {
 .work-experience-date input {
   width: 100%;
   height: 40px;
-  margin: 6px 8px;
+  margin: 10px 10px;
   border-radius: 12px;
   border: none;
   font-size: 20px;
@@ -152,33 +151,24 @@ label {
   transition: transform 0.8s;
 }
 
-.work-experience {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.work-experience-input {
-  width: 100%;
-}
 .error {
-  color: black;
+  color: #ff5733;
   display: none;
   margin-top: 5px;
   font-size: 12px;
 }
+
 .add {
   background-color: #ff5733;
   color: white;
-  /* width: auto; */
   padding: 10px 20px;
   margin-right: 10px;
-  /* align-self: flex-end; */
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .skill-heading,
 .education-heading,
 .certification-heading,
@@ -187,8 +177,8 @@ label {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* margin: 10px 50px; */
 }
+
 #resumePreview {
   margin-top: 20px;
   border: 1px solid #ccc;
@@ -197,86 +187,13 @@ label {
   background-color: #f9f9f9;
 }
 
-#resumePreview h2 {
-  margin-top: 0;
-  font-size: 1.5em;
-  color: #333;
-}
-
-#resumePreview p {
-  margin: 10px 0;
-  font-size: 1em;
-  color: #555;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
 #resumePreview h3 {
-  border-bottom: 2px solid #c026d3;
+  border-bottom: 2px solid #673ab7;
   width: 100%;
   padding-bottom: 5px;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #c026d3;
-}
-#resumePreview .top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #c026d3;
-  color: #ffffff;
-}
-#resumePreview .top i {
-  color: #333;
-  font-size: 12px;
-}
-#resumePreview .top p {
-  color: #ffffff;
-  font-size: 12px;
-}
-#resumePreview .info-detail {
-  margin: 4px 8px;
-}
-#resumePreview .info p {
-  padding: 4px 8px;
-}
-#resumePreview .info {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-#resumePreview .main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-#resumePreview .left {
-  width: 30%;
-  margin: 0px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: start;
-}
-#resumePreview .right {
-  width: 70%;
-  margin: 8px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* justify-content: space-between; */
-}
-#resumePreview .right p {
-  width: 100%;
-}
-textarea {
-  min-height: 100px;
-  max-width: 100%;
-  box-sizing: border-box;
+  color: #673ab7;
 }
 
 #generateCv {
@@ -292,4 +209,236 @@ textarea {
 #generateCv:hover,
 .add:hover {
   background-color: #e04c2d;
+}
+/* Resume-Section  */
+.resume-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-width: 600px;
+}
+
+.top {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-top: 20px;
+  display: flex;
+}
+
+.profile-pic {
+  text-align: center;
+  width: 35%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic img {
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #ffffff;
+  border: 10px solid #ffffff;
+  box-shadow: 2px 2px 40px 12px rgba(0, 0, 0, 0.4);
+}
+
+.info {
+  text-align: center;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.info h1 {
+  font-size: 29px;
+  font-weight: bold;
+  color: #673ab7;
+  margin-bottom: 4px;
+}
+
+.info h2 {
+  font-size: 20px;
+  font-weight: normal;
+  color: #292d2d;
+  text-align: center;
+}
+
+.contact-info {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.contact-info i {
+  margin-right: 10px;
+}
+
+.main {
+  display: flex;
+  padding: 20px;
+}
+
+.left {
+  width: 35%;
+  padding: 10px 20px;
+  border-right: 1px solid #ddd;
+}
+
+.left ul {
+  line-height: 1.6rem;
+}
+
+.left h3,
+.right h3 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.left p,
+.right p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.right {
+  width: 65%;
+  padding: 10px 20px;
+}
+
+.right p {
+  font-weight: bold;
+}
+
+.right .education,
+.right .certifications {
+  margin-top: 20px;
+}
+
+.right .education h3,
+.right .certifications h3 {
+  margin-top: 20px;
+}
+/* resume section end  */
+
+/* Media Queries for Small Screens */
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  .personal-information,
+  .skills,
+  .languages {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .personal-information input,
+  .skills input,
+  .languages input {
+    height: 40px;
+    font-size: 20px;
+  }
+
+  /* .summary textarea,
+  .work-experience-input textarea {
+    width: 90%;
+    font-size: 16px;
+  } */
+
+  .education-input input,
+  .work-experience-input input,
+  .certification-input input {
+    height: 40px;
+    font-size: 20px;
+  }
+
+  /* .top {
+    flex-direction: column;
+  } */
+
+  /* .profile-pic {
+    width: 50%;
+  }
+
+  .info {
+    width: 50%;
+  } */
+
+  /* .main {
+    flex-direction: column;
+  } */
+
+  /* .left {
+    width: 100%;
+    border-right: none;
+  }
+
+  .right {
+    width: 100%;
+  } */
+  #resumePreview {
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    padding: 5px;
+  }
+
+  .personal-information input,
+  .skills input,
+  .languages input {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  /* .summary textarea,
+  .work-experience-input textarea {
+    width: 85%;
+    font-size: 16px;
+  } */
+  .education-input-date,
+  .work-experience-date {
+    grid-template-columns: 1fr;
+  }
+
+  .education-input input,
+  .work-experience-input input,
+  .certification-input input {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  /* .top {
+    padding: 10px 0;
+  }
+
+  .profile-pic {
+    width: 60%;
+  }
+
+  .info {
+    width: 60%;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .left,
+  .right {
+    padding: 10px;
+  } */
 }

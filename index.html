@@ -73,6 +73,11 @@
             />
             <span class="error" id="addressError">This field is required.</span>
           </div>
+          <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="photo" accept="image/*" />
+            <span class="error" id="imageError">This field is required.</span>
+          </div>
         </div>
 
         <h2>Summary</h2>
@@ -126,7 +131,9 @@
             Add More Education
           </button>
         </div>
-        <div class="education" id="educationContainer">
+
+        <!-- Initial education input -->
+        <div class="education">
           <div class="education-input">
             <input type="text" id="school" name="school" placeholder="School" />
             <span class="error" id="schoolError">This field is required.</span>
@@ -160,6 +167,9 @@
             </div>
           </div>
         </div>
+
+        <!-- educationContainer for dynamically added inputs -->
+        <div id="educationContainer"></div>
 
         <div class="certification-heading">
           <h2>Certification</h2>
